@@ -55,14 +55,18 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-5 offset-2">
-                <h1>Погода на {{date}}, {{city}}</h1>
+            <div class="col-8 offset-2">
+                <h1>Погода сейчас, {{date}}, {{city}}</h1>
                 <b>Температура: {{temp}}</b><br>
                 <b>Влажность: {{humidity}}</b><br>
                 <b>Давление: {{pressure}} мм.рт.ст.</b>
                 <b>Скорость ветра: {{wind_speed}} м/с</b>
                 <img src="http://openweathermap.org/img/w/{{icon}}.png" class="img-thumbnail">
             </div>
+            <form action="/forecast-7days/{{city}}" method="post">
+                    {%csrf_token%}
+                    <input type="submit" value="На 7 дней" class="mt-2 btn btn-danger">
+            </form>
 
         </div>
     </div>

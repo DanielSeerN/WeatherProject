@@ -16,7 +16,7 @@ def get_current_weather_data(location):
     weather_report = {
         'city': str(response["name"]),
         'date': date,
-        'temp': str(response["main"]["temp_min"]) + ' ... ' + str(response["main"]["temp_max"]) + 'C',
+        'temp': str(response["main"]["temp"]) + 'C',
         'icon': response["weather"][0]["icon"],
         'humidity': str(response["main"]["humidity"]),
         'pressure': str(response["main"]["pressure"]),
@@ -37,13 +37,17 @@ def get_7days_weather_data(coordinates):
         date = str(datetime.datetime.fromtimestamp(timestamp))
         weather_report = {
             'city': str(coordinates["city"]),
-            'date': date[:9],
+            'date': date[:10],
             'temp': str(response["daily"][i]["temp"]["min"]) + ' ... ' + str(response["daily"][i]["temp"]["max"]) + 'C',
             'icon': response["daily"][i]["weather"][0]["icon"],
             'humidity': str(response["daily"][i]["humidity"]),
             'pressure': str(response["daily"][i]["pressure"]),
             'wind_speed': str(response["daily"][i]["wind_speed"]),
-            'precipitation_prob': str(response["daily"][i]["pop"]) + '  %'
+            'precipitation_prob': str(response["daily"][i]["pop"]) + '  %',
+            'morn_temp': str(response["daily"][i]["temp"]["morn"]) + 'C',
+            'day_temp': str(response["daily"][i]["temp"]["day"]) + 'C',
+            'eve_temp': str(response["daily"][i]["temp"]["eve"]) + 'C',
+            'night_temp': str(response["daily"][i]["temp"]["night"]) + 'C',
         }
         forecast.append(weather_report)
     return forecast

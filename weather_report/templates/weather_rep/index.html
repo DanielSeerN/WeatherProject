@@ -57,25 +57,13 @@
         <h1>Введите название города</h1>
         <div class="row">
             <div class="col-5 offset-1">
-                <h2>Погода сейчас</h2>
-                <form action="search-current/" method="post">
+                <form action="search/" method="post">
                     {%csrf_token%}
                     <label for="city">Город</label>
                     <input type="text" id="city_today" name="city_today" class="form-control" placeholder="Введите город">
                     <input type="submit" value="Найти" class="mt-2 btn btn-danger">
 
                 </form>
-            </div>
-            <div class="col-5 offset-1">
-                <h2>Погода на 7 дней</h2>
-                <form action="search-7days/" method="post">
-                    {%csrf_token%}
-                    <label for="city">Город</label>
-                    <input type="text" id="city_7days" name="city_7days" class="form-control" placeholder="Введите город">
-                    <input type="submit" value="Найти" class="mt-2 btn btn-danger">
-
-                </form>
-
             </div>
             <div class="col-4 offset-1">
                 <h1></h1>

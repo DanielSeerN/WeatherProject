@@ -55,16 +55,24 @@
     </div>
     <div class="container">
             {%for forecast in forecasts%}
-            <div class="col-5 offset-2">
-                <h1>Погода на {{forecast.date}}, {{forecast.city}}</h1>
-                <b>Температура: {{forecast.temp}}</b><br>
-                <b>Влажность: {{forecast.humidity}}</b><br>
-                <b>Давление: {{forecast.pressure}} мм.рт.ст.</b>
-                <b>Скорость ветра: {{forecast.wind_speed}} м/с</b>
-                <b>Шанс осадков: {{forecast.precipitation_prob}} </b>
-                <img src="http://openweathermap.org/img/w/{{forecast.icon}}.png" class="img-thumbnail">
+            <div class="col-8 offset-2">
+                <div class="card-body p-4">
+                    <h1>Погода на {{forecast.date}}, {{forecast.city}}</h1>
+                    <b>Температура: {{forecast.temp}}</b><br>
+                    <b>Влажность: {{forecast.humidity}}</b><br>
+                    <b>Давление: {{forecast.pressure}} мм.рт.ст.</b>
+                    <b>Скорость ветра: {{forecast.wind_speed}} м/с</b>
+                    <b>Шанс осадков: {{forecast.precipitation_prob}} </b>
+                    <p>Утро: {{forecast.morn_temp}} День: {{forecast.day_temp}} Вечер: {{forecast.eve_temp}} Ночь: {{forecast.night_temp}} </p>
+                    <img src="http://openweathermap.org/img/w/{{forecast.icon}}.png" class="card-img-right img-thumbnail">
+                </div>
+
             </div>
             {%endfor%}
+        <form action="/forecast-current/{{forecasts.1.city}}" method="post">
+            {%csrf_token%}
+        <input type="submit" value="Погода сейчас" class="mt-2 btn btn-danger">
+        </form>
         </div>
     </div>
 
